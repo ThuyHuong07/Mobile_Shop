@@ -1,0 +1,94 @@
+﻿@model ShopOnlineConnection.SanPham
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_MainLayoutAdmin.cshtml";
+}
+
+<h2>Xóa sản phẩm</h2>
+<style>
+    input[type=text] {
+        width: 100%;
+        height: 40px;
+        background: black;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ff0000;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=number] {
+        width: 100%;
+        height: 40px;
+        background: black;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ff0000;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #2a9fd6;
+        color: black;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+</style>
+@using (Html.BeginForm("Delete", "SanPhamAdmin", FormMethod.Post))
+{
+    <table style="width:80% ;margin:auto; background:black;">
+        <tr>
+            <td>Mã Sản Phẩm</td>
+            <td> <input style="width: 300px;float:left; " maxlength="11" type="text" name="MaSanPham" required   value="@Model.MaSanPham" readonly/></td>
+        </tr>
+
+        <tr>
+            <td>Tên Sản Phẩm</td>
+            <td> <input style="width: 300px;float:left;" type="text" maxlength="11" name="TenSanPham" required value="@Model.TenSanPham" readonly/></td>
+        </tr>
+
+        <tr>
+            <td>Giá</td>
+            <td> <input style="width: 300px; float:left;" type="number" name="Gia" required value="@Model.Gia" readonly/></td>
+        </tr>
+        <tr>
+            <td>Ghi Chú</td>
+            <td> <input style="width: 300px;float:left;" type="text" name="GhiChu" readonly value="@Model.GhiChu" required/></td>
+        </tr>
+       
+        <tr>
+            <td style="width: 300px;">Cấu Hình</td>
+            <td colspan="2"><textarea class="ckeditor" name="CauHinh" style="width: 300px; height: 150px;  max-width: 100px; max-height: 600px; background:white;" rows="4" cols="30" readonly> @Model.CauHinh</textarea></td>
+        </tr>
+        <tr>
+        <td style="width: 300px;">Tình Trạng</td>
+        <td>
+            <select style="width:20%;background-color:#5d5e63;" name="TinhTrang" required>
+                @if (Model.TinhTrang == "1")
+                {
+                    <option value="1" selected>Đã Khóa</option> }
+                else
+                 {
+                     <option value="0" selected>Chưa Khóa</option>}
+            </select>
+        </td>
+        
+    </tr>
+        <tr>
+            <td colspan="3">
+                <input type="submit" value="Xác nhận xóa" />
+            </td>
+        </tr>
+    </table>
+}
